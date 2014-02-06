@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+/rest-frontend-builder/target/
+/target/
+/nb-configuration.xml
