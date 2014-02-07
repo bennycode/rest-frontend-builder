@@ -6,17 +6,21 @@
          version="3.1">
   <!-- Jersey -->
   <servlet>
-    <servlet-name>Jersey Web Application</servlet-name>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <!-- http://stackoverflow.com/a/17772352/451634 -->
     <servlet-class>
-      com.sun.jersey.spi.container.servlet.ServletContainer
+      org.glassfish.jersey.servlet.ServletContainer
     </servlet-class>
+    <!--  Use package scanning -->
     <init-param>
-      <param-name>
-        com.sun.jersey.config.property.packages
-      </param-name>
+      <param-name>jersey.config.server.provider.packages</param-name>
       <param-value>
-        com.welovecoding.web.rest
+        com.welovecoding.rest.frontend.builder.main
       </param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.scanning.recursive</param-name>
+      <param-value>false</param-value>
     </init-param>
     <init-param>
       <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -25,8 +29,8 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>
